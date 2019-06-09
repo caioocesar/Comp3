@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class UsuarioMapper {
 	
-	public boolean verificaRegistro(String nome, String cpf, String senha) throws SQLException
+	public Usuario verificaRegistro(String nome, String cpf, String senha) throws SQLException
 	{
 
 			ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -21,14 +21,14 @@ public class UsuarioMapper {
 
 			while ( rs.next() ) {
 				String aux = rs.getString("cpf");
-				System.out.println(aux);
+				//System.out.println(aux);
 				if(aux.equals(cpf)) {
-					return false;
+					return null;
 				}
 				
 			}
 			registra(nome, cpf, senha, c);
-			return true;
+			return new Usuario(nome, cpf, senha);
 			
 			
 	}
@@ -42,7 +42,7 @@ public class UsuarioMapper {
         + "\'"+nome+"\'"+",\n"
         + "\'"+senha+"\'"+"\n"
         + ")";
-		System.out.println(SQL2);
+		//System.out.println(SQL2);
 		stm.executeUpdate(SQL2);
 		
 	}

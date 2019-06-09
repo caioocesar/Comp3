@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.sql.*;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,10 +41,10 @@ public class ServletLogin extends HttpServlet {
     	        String senha = request.getParameter("senha");
     	         
 
-    			Main teste = new Main();
+    			ControlLogin ctrl = new ControlLogin();
     			String a;
 				try {
-					a = teste.conectar2(cpf, senha);
+					a = ctrl.login(cpf, senha);
 					String message = a;
 	    	        if(!(a.equals("Senha errada!")) && !(a.equals("Usuário não encontrado!"))){
 	    	        	response.sendRedirect("home.jsp?message=" + URLEncoder.encode(message, "UTF-8"));

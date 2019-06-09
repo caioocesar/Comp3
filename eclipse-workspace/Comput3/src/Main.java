@@ -6,9 +6,9 @@ public class Main {
 	
 	public static void main(String[] args) throws SQLException {
 
-		ConnectionFactory connectionFactory = new ConnectionFactory();
-		Connection c = connectionFactory.getConnection();
-		Statement stm = c.createStatement();
+		//ConnectionFactory connectionFactory = new ConnectionFactory();
+		//Connection c = connectionFactory.getConnection();
+		//Statement stm = c.createStatement();
 		/*String SQL = "CREATE TABLE cliente (\n"
                 + "	id integer PRIMARY KEY,\n"
                 + "	senha integer\n"
@@ -89,8 +89,8 @@ public class Main {
 			String aux = rs.getString("cpf");
 			String aux2 = rs.getString("senha");
 			String aux3 = rs.getString("nome");
-			System.out.println(aux);
-			System.out.println(aux2);
+			//System.out.println(aux);
+			//System.out.println(aux2);
 			if(aux.equals(cpf) && aux2.equals(senha)) {
 				return aux3;
 			}

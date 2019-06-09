@@ -4,24 +4,57 @@ public class Usuario {
 	private String nome;
 	private String cpf;
 	private String senha;
-	private String funcao = "Ainda nada";
-	private boolean teste = false;
+	private boolean flag = false;
 	
 	public Usuario(String nome, String cpf, String senha) throws SQLException
 	{
 		UsuarioMapper mapper = new UsuarioMapper();
-		boolean result = mapper.verificaRegistro(nome, cpf, senha);
-		this.nome = nome;
-		this.cpf = cpf;
-		this.senha = senha;
-		teste = result;
+		Usuario user = mapper.verificaRegistro(nome, cpf, senha);
+		
+		if(user == null)
+		{
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+			this.nome = user.getNome();
+			this.cpf = user.getCpf();
+			this.senha = user.getSenha();
+		}
+
 	}
+	
 	public Usuario(String id)
 	{
 		
 	}
 	public boolean resultado()
 	{
-		return this.teste;
+		return this.flag;
 	}
+	
+	
+	public String getNome() {
+		return nome;
+	}
+
+
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+
+
 }

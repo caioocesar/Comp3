@@ -1,0 +1,16 @@
+import java.sql.SQLException;
+
+public class ControlRegistrarUsuario {
+	
+	private Usuario user;
+	public boolean registrar(String nome, String cpf, String senha) throws SQLException
+	{
+		this.user = new Usuario(nome, cpf, senha);
+		return user.resultado();
+	}
+	public Usuario getUser() {
+		return this.user;
+	}
+	
+	
+}

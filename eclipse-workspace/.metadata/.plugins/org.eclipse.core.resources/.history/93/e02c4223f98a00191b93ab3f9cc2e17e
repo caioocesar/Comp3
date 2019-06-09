@@ -1,0 +1,26 @@
+import java.sql.SQLException;
+
+public class Usuario {
+	private String nome;
+	private String cpf;
+	private String senha;
+	private boolean flag = false;
+	
+	public Usuario(String nome, String cpf, String senha) throws SQLException
+	{
+		UsuarioMapper mapper = new UsuarioMapper();
+		boolean result = mapper.verificaRegistro(nome, cpf, senha);
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+		flag = result;
+	}
+	public Usuario(String id)
+	{
+		
+	}
+	public boolean resultado()
+	{
+		return this.flag;
+	}
+}

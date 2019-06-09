@@ -40,9 +40,10 @@ public class ServletrRegistrarUsuario extends HttpServlet {
     	    
     	    try {
 				boolean result = ctrl.registrar(nome, cpf, senha);
+				
 				if(result == true)
 				{
-					response.sendRedirect("home.jsp");
+					response.sendRedirect("home.jsp?message=" + URLEncoder.encode(nome, "UTF-8"));
 				}
 				else
 				{
