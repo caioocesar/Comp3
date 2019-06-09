@@ -1,0 +1,53 @@
+import java.sql.*;
+
+public class UsuarioMapper {
+	
+	public boolean verificaRegistro(String nome, String cpf, String senha) throws SQLException
+	{
+
+			ConnectionFactory connectionFactory = new ConnectionFactory();
+			Connection c = connectionFactory.getConnection();
+			Statement stm = c.createStatement();
+
+			String SQL = "CREATE TABLE usuarios (\n"
+			        + "	cpf text PRIMARY KEY,\n"
+			        + "	nome text\n"
+			        + "	senha text\n"
+			        + ")";
+			stm.executeUpdate(SQL);
+
+			String SQL2 = "SELECT * FROM usuarios";
+			
+			System.out.println(SQL2);
+			stm.executeQuery(SQL2);
+			
+			ResultSet rs = stm.getResultSet();
+			
+
+			while ( rs.next() ) {
+				if(rs.getString("cpf").equals(cpf)) {
+					registra(nome, cpf, senha, c);
+					return true;
+				}
+				
+			}
+			return false;
+			
+			
+	}
+	
+	private void registra(String nome, String cpf, String senha, Connection c) throws SQLException
+	{
+		Statement stm = c.createStatement();
+				
+		String SQL2 = "INSERT INTO usuarios VALUES(\n"
+        + cpf+",\n"
+        + nome+",\n"
+        + senha+"\n"
+        + ")";
+		stm.executeUpdate(SQL2);
+		
+	}
+	
+	
+}

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+
+
+<html lang='pt-BR'>
+
+	<head>
+		<title>Minha página</title>
+		<meta charset = 'utf-8'>
+		<link rel="icon" href="icone.png" type="image/png" />
+		<link rel="shortcut icon" href="image.png" type="image/png" />
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<meta name="google-site-verification" content="CFRU3GMSVPownkObtOn5ZXQgMvG9pDXRyOME0DqvXx4" />
+		<script src="codigo.js"></script>
+	</head>
+
+	<body onload="finishLoad()" onpageshow="pageShow()">
+
+		<header>
+			<br>
+			<form method="POST" action="Login" class="login">
+				<label></label><input type="text" name="usuario" id="login" placeholder="Login"><br><br>
+				<label></label><input type="password" name="senha" id="senha" placeholder="Senha"><br><br>
+				<input type="submit" value="entrar" id="entrar" name="entrar">
+				
+			</form>
+			<form method="POST" action="Registrar" class="login">
+				<button type="submit"value="registrar" id="entrar" name="registrar">Registre-se</button><br>
+			</form>
+
+			<img src="logo2.png" width="380px" height="160px" title="My page" alt="Image failed"></img>
+			<form class="pesquisa" action=" " method="post" title="Buscar">
+  			<label for="busca"></label>
+  				<input type="search" id="busca" name="q" placeholder="Buscar">
+  				<button type="submit">OK</button>
+			</form>
+
+		</header>
+
+		<nav>
+		<table>
+			<lr>
+				<ld class="button" title="Botão">Botão um</ld>
+				<ld class="button" title="Botão">Botão dois</ld>
+				<ld class="button" title="Botão">Botão três</ld>
+				<ld class="button" title="Botão">Botão quatro</ld>
+				<ld class="button" title="Botão">Botão cinco</ld>
+				<ld class="button" title="Botão">Botão seis</ld>
+				<ld class="button" title="Botão">Botão sete</ld>
+			</lr>
+		</table>
+		</nav>
+
+		<section id="secao" >
+			<br>Coisas
+		<a href="http://www.google.com" target="_blank">Google</a>
+		<br>
+				
+		</section>
+
+		<footer>
+			Caio César, 2019.
+		</footer>
+
+	</body>
+
+
+
+
+
+</html>

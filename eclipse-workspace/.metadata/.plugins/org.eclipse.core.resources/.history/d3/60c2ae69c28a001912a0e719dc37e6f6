@@ -1,0 +1,49 @@
+import java.sql.*;
+
+public class UsuarioMapper {
+	
+	public boolean verificaRegistro(String nome, String cpf, String senha)
+	{
+		try {
+			ConnectionFactory connectionFactory = new ConnectionFactory();
+			Connection c = connectionFactory.getConnection();
+			//PreparedStatement stm = c.prepareStatement("SELECT senha FROM cliente");
+			Statement stm = c.createStatement();
+
+
+			
+			String SQL = "SELECT * FROM cliente WHERE id="+nome;
+			//String SQL = "SELECT id,senha FROM cliente";
+			//String SQL = "SELECT * FROM cliente";
+			System.out.println(SQL);
+			stm.executeQuery(SQL);
+			ResultSet rs = stm.getResultSet();
+			//System.out.println( rs.getString( "senha" ) );
+			int aux = 0;
+			while ( rs.next() ) {
+				int tmp = rs.getInt("senha");
+				if(tmp != 0)
+				{
+					System.out.println( rs.getInt("senha"));
+					aux = tmp;
+				}
+			}
+			if(aux == 0)
+			{
+				throw new SQLException();
+			}
+			//System.out.println(aux + " " + senha);
+	        if(Integer.parseInt(senha) == aux){
+	        	//System.out.println("Entrouuu");
+	            return true;
+	        }else{
+	            return false;
+	        }
+	        
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return false;
+	}
+}

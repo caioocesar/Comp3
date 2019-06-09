@@ -1,0 +1,105 @@
+import java.sql.*;
+
+
+public class Main {
+
+	
+	public static void main(String[] args) throws SQLException {
+
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+		Connection c = connectionFactory.getConnection();
+		Statement stm = c.createStatement();
+		/*String SQL = "CREATE TABLE cliente (\n"
+                + "	id integer PRIMARY KEY,\n"
+                + "	senha integer\n"
+                + ")";
+		stm.executeUpdate(SQL);*/
+		/*String SQL = "INSERT INTO cliente VALUES(\n"
+                + "2,\n"
+                + "2\n"
+                + ")";
+		stm.executeUpdate(SQL);
+		c.close();*/
+		
+
+	}
+	
+	public boolean conectar(String nome, String senha)
+	{
+		try {
+			ConnectionFactory connectionFactory = new ConnectionFactory();
+			Connection c = connectionFactory.getConnection();
+			//PreparedStatement stm = c.prepareStatement("SELECT senha FROM cliente");
+			Statement stm = c.createStatement();
+
+
+			
+			String SQL = "SELECT * FROM cliente WHERE id="+nome;
+			//String SQL = "SELECT id,senha FROM cliente";
+			//String SQL = "SELECT * FROM cliente";
+			System.out.println(SQL);
+			stm.executeQuery(SQL);
+			ResultSet rs = stm.getResultSet();
+			//System.out.println( rs.getString( "senha" ) );
+			int aux = 0;
+			while ( rs.next() ) {
+				int tmp = rs.getInt("senha");
+				if(tmp != 0)
+				{
+					System.out.println( rs.getInt("senha"));
+					aux = tmp;
+				}
+			}
+			if(aux == 0)
+			{
+				throw new SQLException();
+			}
+			//System.out.println(aux + " " + senha);
+	        if(Integer.parseInt(senha) == aux){
+	        	//System.out.println("Entrouuu");
+	            return true;
+	        }else{
+	            return false;
+	        }
+	        
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return false;
+	}
+	
+	public boolean conectar2(String cpf, String senha)
+	{
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+		Connection c = connectionFactory.getConnection();
+		Statement stm = c.createStatement();
+		//String SQL = "create table usuarios(cpf varchar(20) not null,nome varchar(20) not null,senha varchar(20) not null,primary key(cpf))";
+		//stm.executeUpdate(SQL);
+		
+		String SQL2 = "SELECT * FROM usuarios";
+		
+		System.out.println(SQL2);
+		stm.executeQuery(SQL2);
+		
+		ResultSet rs = stm.getResultSet();
+		
+
+		while ( rs.next() ) {
+			String aux = rs.getString("cpf");
+			String aux2 = rs.getString("senha");
+			System.out.println(aux);
+			System.out.println(aux2);
+			if(aux.equals(cpf) && aux2.equals(senha)) {
+				return true;
+			}
+			
+		}
+		return false;
+		
+		
+}
+		
+	}
+
+}

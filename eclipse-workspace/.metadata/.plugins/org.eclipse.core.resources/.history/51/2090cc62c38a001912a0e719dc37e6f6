@@ -1,0 +1,8 @@
+
+public class ControlRegistrarUsuario {
+	
+	public void registrar(String nome, String cpf, String senha)
+	{
+		
+	}
+}

@@ -1,0 +1,27 @@
+import java.sql.SQLException;
+
+public class Usuario {
+	private String nome;
+	private String cpf;
+	private String senha;
+	private String funcao = "Ainda nada";
+	
+	public Usuario(String nome, String cpf, String senha) throws SQLException
+	{
+		UsuarioMapper mapper = new UsuarioMapper();
+		boolean result = mapper.verificaRegistro(nome, cpf, senha);
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+		aviso(result);
+	}
+	public Usuario(String id)
+	{
+		
+	}
+	public void aviso(boolean a) throws SQLException
+	{
+		System.out.println("Usuario ja existe!!");
+		throw new SQLException("Usuario ja existe!!");
+	}
+}

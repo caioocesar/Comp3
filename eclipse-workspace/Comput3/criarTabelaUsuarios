@@ -1,0 +1,7 @@
+create table usuarios(
+	cpf varchar(20) not null,
+	nome varchar(20) not null,
+	senha varchar(20) not null,
+	primary key(cpf)	
+);
+

@@ -1,0 +1,2 @@
+CREATE TABLE usuarios(cpf varchar, nome varchar, senha varchar);
+cpf PRIMARY KEY;
